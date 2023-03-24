@@ -231,6 +231,7 @@ jobs:
           name: Run migrations
           command: |
             sudo npm install typescript -g
+            sudo npm install -g ts-node
             export TYPEORM_HOST=$(aws ec2 describe-instances --region us-east-1 --query 'Reservations[*].Instances[*].PublicIpAddress' --output text)
             cd backend
             npm install
