@@ -35,7 +35,7 @@ commands:
           command: |
             sudo apt update
             sudo apt install software-properties-common
-            sudo add apt-repository --yes --update ppa:ansible/ansible
+            sudo add-apt-repository --yes --update ppa:ansible/ansible
             sudo apt install ansible
 
 
@@ -197,9 +197,10 @@ jobs:
 
   configure-infrastructure:
     docker:
-      - image: cimg/base:stable
+      - image: cimg/node:13.8.0
     steps:
       - checkout
+      - install_aws
       - install_ansible
       - add_ssh_keys:
           fingerprints: ["45:71:b7:a8:81:b3:e8:67:a5:b4:6a:52:7e:4a:b1:b3"]
