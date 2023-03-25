@@ -289,12 +289,9 @@ jobs:
                     
   deploy-backend:
     docker:
-      - image: cimg/base:stable
+      - image: mareimorsy/aws-node
     steps:
       - checkout
-      - install_aws
-      - install_node
-      - install_ansible
       - add_ssh_keys:
           fingerprints: ["c9:2e:69:b9:7d:05:7e:30:6c:72:8c:aa:40:23:b1:53"]
       - attach_workspace:
@@ -327,8 +324,8 @@ jobs:
             cat inventory.txt
             ansible-playbook -vvv -i inventory.txt deploy-backend.yml
 
-      - destroy-environment
-      - revert-migrations 
+      # - destroy-environment
+      # - revert-migrations 
 
   smoke-test:
     docker:
