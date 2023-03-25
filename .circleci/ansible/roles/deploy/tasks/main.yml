@@ -3,6 +3,10 @@
     path: /home/ubuntu/backend
     state: directory
 
+- copy:
+    src: ~/project/.circleci/ansible/roles/deploy/artifact.tar.gz
+    dest: /home/ubuntu/backend
+
 - name: Extract artifact.tar.gz to EC2 
   unarchive:
     src: artifact.tar.gz
@@ -12,15 +16,11 @@
   shell: |
     cd /home/ubuntu/backend
     npm i
-
-- name: "Executing Node app with PM2"
+- name: Start the app
   shell: |
-    cd /home/ubuntu/backend
     pm2 stop default
-    node dist/main.js
-
-  register: execute_node
-
-- name: "print message"
-  debug:
-    msg: "{{ execute_node.stdout_lines }}"
+    node /home/ubuntu/backend/dist/main.js
+# - name: Enable pm2
+#   become: true
+#   shell: |
+#     sudo su -c "env PATH=$PATH:/usr/local/bin pm2 startup systemd -u ubuntu --hp /home/ubuntu"
