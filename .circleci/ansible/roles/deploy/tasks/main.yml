@@ -15,9 +15,6 @@
 
 - name: "Executing Node app with PM2"
   shell: |
-    export TYPEORM_ENTITIES=./backend/dist/modules/domain/**/*.entity{.ts,.js}
-    export TYPEORM_MIGRATIONS_DIR=./backend/dist/migrations
-    export TYPEORM_MIGRATIONS=./backend/dist/migrations/*.ts
     cd /home/ubuntu/backend
     pm2 stop default
     node dist/main.js
