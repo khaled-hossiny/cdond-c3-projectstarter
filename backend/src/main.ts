@@ -38,11 +38,7 @@ async function bootstrap() {
     origin(origin, callback) {
       const isOriginAllowed = whitelist.indexOf(origin) !== -1;
       const allowAccessAnyway = whitelist.length === 0;
-      if (isOriginAllowed || allowAccessAnyway) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
+      callback(null, true);
     },
   };
   app.use(cors(corsOptions));
