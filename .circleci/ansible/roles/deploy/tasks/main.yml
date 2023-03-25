@@ -19,7 +19,7 @@
 - name: Start the app
   shell: |
     pm2 stop default
-    node /home/ubuntu/backend/dist/main.js
+    pm2 start -f /home/ubuntu/backend/dist/main.js
 # - name: Enable pm2
 #   become: true
 #   shell: |
