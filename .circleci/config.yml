@@ -324,7 +324,7 @@ jobs:
             ls ../.circleci/ansible/roles/deploy/
             cd ../.circleci/ansible
             echo "44.197.244.9" >> inventory.txt
-            ansible-playbook -i inventory.txt deploy-backend.yml
+            ansible-playbook -vvv -i inventory.txt deploy-backend.yml
 
       # - destroy-environment
       # - revert-migrations 
