@@ -349,6 +349,7 @@ jobs:
               exit 0
             else
               exit 1
+            fi
       - run:
           name: Frontend smoke test.
           command: |
@@ -359,6 +360,7 @@ jobs:
               exit 0
             else
               exit 1
+            fi
         
       # Here's where you will add some code to rollback on failure  
 
