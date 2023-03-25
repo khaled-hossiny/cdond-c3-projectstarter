@@ -318,9 +318,6 @@ jobs:
       - run:
           name: Deploy backend
           command: |
-            export TYPEORM_MIGRATIONS_DIR=./dist/migrations
-            export TYPEORM_ENTITIES=./dist/modules/domain/**/*.entity{.ts,.js}
-            export TYPEORM_MIGRATIONS=./dist/migrations/*.ts
             echo "3.238.144.203" >> .circleci/ansible/inventory.txt
             cd .circleci/ansible
             cat inventory.txt
