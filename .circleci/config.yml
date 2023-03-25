@@ -321,7 +321,7 @@ jobs:
             cp artifact.tar.gz ~/project/.circleci/ansible/roles/deploy/artifact.tar.gz
             ls ../.circleci/ansible/roles/deploy/
             cd ../.circleci/ansible
-            echo "3.235.8.42" >> inventory.txt
+            echo "44.212.52.57" >> inventory.txt
             cat inventory.txt
             ansible-playbook -vvv -i inventory.txt deploy-backend.yml
 
