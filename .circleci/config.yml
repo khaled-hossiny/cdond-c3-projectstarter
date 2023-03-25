@@ -355,7 +355,7 @@ jobs:
           command: |
             #FRONTEND_APP=https://s3.console.aws.amazon.com/s3/buckets/udapeople-${CIRCLE_WORKFLOW_ID:0:7}?region=${AWS_DEFAULT_REGION}
             FRONTEND_APP=https://udapeople-5719b3d.s3.amazonaws.com/index.html
-            if curl -s $FRONTEND_APP | grep "welcome"
+            if curl -s $FRONTEND_APP | grep "Welcome"
             then
               exit 0
             else
