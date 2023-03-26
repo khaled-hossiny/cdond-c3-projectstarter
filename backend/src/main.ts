@@ -12,6 +12,7 @@ import { ErrorFilter } from './modules/errors/error.filter';
 
 async function bootstrap() {
   const logger = new AppLogger();
+  logger.log(`inside bootstrap`);
   logger.info(`NodeJs Version ${process.version}`);
   logger.info(JSON.stringify(process.env));
   const server = express();
