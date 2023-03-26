@@ -28,7 +28,7 @@ async function bootstrap() {
     .setVersion('1.0')
     .addTag('customTag')
     .setBasePath(apiVersionPrefix)
-    .addBearerAuth() // here is an intentional compile error. Remove the "x" and the backend should compile.
+    .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup(`api/${apiVersionPrefix}`, app, document);
@@ -38,10 +38,14 @@ async function bootstrap() {
     origin(origin, callback) {
       const isOriginAllowed = whitelist.indexOf(origin) !== -1;
       const allowAccessAnyway = whitelist.length === 0;
-      callback(null, true);
+      if (isOriginAllowed || allowAccessAnyway) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
     },
   };
-  app.use(cors(corsOptions));
+  app.use(cors({  "origin": "*", "methods": "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS"}));
   app.useGlobalFilters(new ErrorFilter());
   await app.listen(config.PORT);
   logger.log(`Listening on port ${config.PORT}.`);
