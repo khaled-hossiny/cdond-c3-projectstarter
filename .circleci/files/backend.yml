@@ -47,4 +47,3 @@ Resources:
     Properties:
       Domain: vpc
       InstanceId: !Ref EC2Instance
-
